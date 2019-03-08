@@ -5,13 +5,16 @@ import { addToCart } from '../actions';
 import { getVisibleProducts } from '../reducers/products';
 import ProductItem from '../components/ProductItem';
 import ProductsList from '../components/ProductsList';
-
-const ProductsContainer = ({ products, addToCart }) => (
+import {getLoadStatus, getTotalRequest } from '../reducers/loading';
+const ProductsContainer = ({ products, addToCart, loading, totalRequest}) => (
+    <div>
+        <progress id="progressbar" className="progress is-large is-info" max={totalRequest} value={loading}></progress> 
     <ProductsList title="Products">
         {products.map(product => (
             <ProductItem key={product.id} product={product} onAddToCartClicked={() => addToCart(product.id)} />
         ))}
     </ProductsList>
+    </div>
 );
 
 ProductsContainer.propTypes = {
@@ -23,11 +26,14 @@ ProductsContainer.propTypes = {
             inventory: PropTypes.number.isRequired
         })
     ).isRequired,
+    loading: PropTypes.number.isRequired,
     addToCart: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-    products: getVisibleProducts(state.products)
+    products: getVisibleProducts(state.products),
+    loading: getLoadStatus(),
+    totalRequest: getTotalRequest()
 });
 
 export default connect(

@@ -1,5 +1,6 @@
 import shop from '../api/shop';
 import * as types from '../constants/ActionTypes';
+import http from '../utils/axios';
 
 const receiveProducts = products => ({
     type: types.RECEIVE_PRODUCTS,
@@ -11,7 +12,18 @@ export const getAllProducts = () => dispatch => {
         dispatch(receiveProducts(products));
     });
 };
-
+export const getAllFeeds = () => dispatch => {
+    http.get('https://api.saharbazar.com/stories')
+        .then(function (response) {
+            console.log(response);
+            shop.getProducts(products => {
+                dispatch(receiveProducts(products));
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+    });
+}
 const addToCartUnsafe = productId => ({
     type: types.ADD_TO_CART,
     productId
