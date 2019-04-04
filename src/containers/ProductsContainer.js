@@ -8,7 +8,9 @@ import ProductsList from '../components/ProductsList';
 import {getLoadStatus, getTotalRequest } from '../reducers/loading';
 const ProductsContainer = ({ products, addToCart, loading, totalRequest}) => (
     <div>
-        <progress id="progressbar" className="progress is-large is-info" max={totalRequest} value={loading}></progress> 
+        {loading !==totalRequest && (
+        <progress id="progressbar" className="progress is-large is-info" max={totalRequest} value={loading}></progress>
+        )}
     <ProductsList title="Products">
         {products.map(product => (
             <ProductItem key={product.id} product={product} onAddToCartClicked={() => addToCart(product.id)} />
