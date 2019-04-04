@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/react-redux-boilerplate/static/js/runtime~main.b737ab0e.js"
   },
   {
-    "revision": "9f65bfc1a5e86cee3371",
-    "url": "/react-redux-boilerplate/static/js/main.2693670b.chunk.js"
+    "revision": "d2b60f33139af492f473",
+    "url": "/react-redux-boilerplate/static/js/main.2dc02d58.chunk.js"
   },
   {
     "revision": "8038dd300fa37dfc68f4",
     "url": "/react-redux-boilerplate/static/js/2.a22c8327.chunk.js"
   },
   {
-    "revision": "9371cc4566e786e92f723ff7da2605b5",
+    "revision": "f14fc11de2ae142219d1a961204398f6",
     "url": "/react-redux-boilerplate/index.html"
   }
 ];
